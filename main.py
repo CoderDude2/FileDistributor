@@ -1,5 +1,8 @@
+import gui
+
 def main() -> None:
-    pass
+    app:gui.App = gui.App()
+    app.run()
 
 if __name__ == "__main__":
     main()
