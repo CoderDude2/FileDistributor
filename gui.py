@@ -1,6 +1,7 @@
 import tkinter as tk 
 from tkinter import ttk
 from dataclasses import dataclass
+import os
 
 @dataclass
 class Associate:
@@ -8,11 +9,13 @@ class Associate:
     case_types:list[str]
 
 class FileList(tk.Frame):
-    def __init__(self, master=None, title:str=None) -> None:
+    def __init__(self, master=None, title:str=None, file_path:str=None) -> None:
         super().__init__(master=master)
 
         self.title:str = title
         self.items:tk.StringVar = tk.StringVar(value=[])
+        if(file_path):
+            self.items.set(value=os.listdir(file_path))
 
         self.filelist_label:tk.Label = tk.Label(self, text=self.title)     
         self.filelist_lb:tk.Listbox = tk.Listbox(self, listvariable=self.items, selectmode='extended')
